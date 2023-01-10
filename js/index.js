@@ -1,6 +1,10 @@
-let modeButtons = document.querySelector("#js-mode-buttons");
+const modeButtons = document.querySelector("#js-mode-buttons");
 
-let timer = {
+const mainButton = document.getElementById("js-btn");
+
+let interval;
+
+const timer = {
   pomodoro: 1,
   shortBreak: 1,
   longBreak: 1,
@@ -8,12 +12,19 @@ let timer = {
   sessions: 0,
 };
 
-let interval;
+mainButton.addEventListener("click", () => {
+  const { action } = mainButton.dataset;
+  action === "start" ? startTimer() : stopTimer();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  switchMode("pomodoro");
+});
 
 modeButtons.addEventListener("click", handleMode);
 
 function handleMode(e) {
-  let { mode } = e.target.dataset;
+  const { mode } = e.target.dataset;
   if (!mode) return;
   switchMode(mode);
   stopTimer();
@@ -35,11 +46,11 @@ function switchMode(mode) {
 }
 
 function updateClock() {
-  let { remainingTime } = timer;
-  let minutes = `${remainingTime.minutes}`.padStart(2, "0");
-  let seconds = `${remainingTime.seconds}`.padStart(2, "0");
-  let min = document.querySelector("#js-minutes");
-  let sec = document.querySelector("#js-seconds");
+  const { remainingTime } = timer;
+  const minutes = `${remainingTime.minutes}`.padStart(2, "0");
+  const seconds = `${remainingTime.seconds}`.padStart(2, "0");
+  const min = document.querySelector("#js-minutes");
+  const sec = document.querySelector("#js-seconds");
   min.textContent = minutes;
   sec.textContent = seconds;
 
@@ -71,7 +82,6 @@ function startTimer() {
         default:
           switchMode("pomodoro");
       }
-
       startTimer();
     }
   }, 1000);
@@ -79,7 +89,6 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(interval);
-
   mainButton.dataset.action = "start";
   mainButton.textContent = "start";
   mainButton.classList.remove("active");
@@ -97,13 +106,3 @@ function getRemainingTime(endTime) {
     seconds,
   };
 }
-
-const mainButton = document.getElementById("js-btn");
-mainButton.addEventListener("click", () => {
-  const { action } = mainButton.dataset;
-  action === "start" ? startTimer() : stopTimer();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  switchMode("pomodoro");
-});
