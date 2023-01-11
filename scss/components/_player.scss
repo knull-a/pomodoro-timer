@@ -1,0 +1,16 @@
+
+#playAudio {
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  background: url("/img/play.png") no-repeat center;
+  background-size: contain;
+}
+
+.audio-player #playAudio.pause {
+  background: url("/img/pause.png") no-repeat center;
+  background-size: contain;
+}

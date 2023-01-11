@@ -1,3 +1,5 @@
+@import 'components/player';
+
 *,
 *::after,
 *::before {
@@ -14,8 +16,6 @@ body {
   cursor: pointer;
   font-family: 'VT323', monospace;
   font-size: 1.3rem;
-  width: 100px;
-  height: 40px;
 }
 
 .active {
@@ -35,7 +35,7 @@ body {
 
 .app {
   background: url("/img/bg-4.gif") no-repeat; // TODO: Fix background responsive
-  background-size: 100%;
+  background-size: cover;
   padding: 50px;
   margin: 0 auto;
   color: #fff;
@@ -76,13 +76,15 @@ body {
   align-items: center;
 
   &__button-group {
-    
+    display: flex;
+    gap: 8px;
   }
   
   &__btn {
     
     &_status {
-      
+      width: 100px;
+      height: 40px;
     }
 
     &_main {
@@ -115,4 +117,5 @@ body {
     font-size: 7rem;
   }
 }
+
 

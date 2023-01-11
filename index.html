@@ -8,14 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/clock.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
+    
   </head>
   <body>
     <main class="app">
       <div class="header">
         <div class="header__logo">
-          <img src="img/icon.png" alt="Logo" class="header__image">
+          <img src="img/clock.png" alt="Logo" class="header__image">
           <span class="header__name">pomodoro by <a href="https://github.com/knull-a">knull-a</a></span>
         </div>
         <!-- TODO: Add menu and settings -->
@@ -42,10 +43,26 @@
           start
         </button>
       </div>
-      <div class="player">here will be player soon ;)</div> 
-      <!-- TODO: Add music player -->
+      <div id="player" style="display: none; visibility: hidden;"></div>
+      <div class="audio-player">
+          <button id="playAudio"></button>
+      </div>
     </main>
     <noscript>Error. Please turn on javascript to properly view this page.</noscript>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "360",
+          width: "640",
+          videoId: "jfKfPfyJRdk",
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
+    </script>
     <script src="js/index.js"></script>
   </body>
 </html>

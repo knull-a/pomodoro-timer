@@ -1,3 +1,4 @@
+
 const modeButtons = document.querySelector("#mode-buttons");
 
 const mainButton = document.querySelector("#btn");
@@ -105,3 +106,39 @@ function getRemainingTime(endTime) {
     seconds,
   };
 }
+
+var player;
+
+function onPlayerReady(event) {
+  document.getElementById(ui.play).addEventListener("click", togglePlay);
+  timeupdater = setInterval(initProgressBar, 100);
+}
+
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.ENDED) {
+    document.getElementById(ui.play).classList.remove("pause");
+    document.getElementById(ui.percentage).style.width = 0;
+    document.getElementById(ui.currentTime).innerHTML = "00:00";
+    player.seekTo(0, true);
+  }
+}
+
+let ui = {
+  play: "playAudio",
+  audio: "audio",
+  percentage: "percentage",
+  seekObj: "seekObj",
+  currentTime: "currentTime",
+};
+
+function togglePlay() {
+  if (player.getPlayerState() === 1) {
+    player.pauseVideo();
+    document.getElementById(ui.play).classList.remove("pause");
+  } else {
+    player.playVideo();
+    document.getElementById(ui.play).classList.add("pause");
+  }
+}
+
+
