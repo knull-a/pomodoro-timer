@@ -17,6 +17,8 @@ let player;
 
 mainButton.addEventListener("click", () => {
   const { action } = mainButton.dataset;
+  const audio = new Audio('./audio/click.wav');
+  audio.play()
   action === "start" ? startTimer() : stopTimer();
 });
 
