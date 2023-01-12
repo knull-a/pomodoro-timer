@@ -1,121 +1,12 @@
+@import 'base/reset';
+
+@import 'components/buttons';
 @import 'components/player';
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+@import 'layout/header';
+@import 'layout/main';
 
-body {
-  font-family: 'VT323', monospace;
-}
 
-.btn {
-  cursor: pointer;
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-}
 
-.active {
-  position: relative;
-}
-
-.active::after {
-  position: absolute;
-  display: block;
-  content: '>';
-  top: -35px;
-  left: 45%;
-  color: #06C1DE;
-  font-size: 2.5rem;
-  rotate: 90deg;
-}
-
-.app {
-  background: url("/img/bg-4.gif") no-repeat; // TODO: Fix background responsive
-  background-size: cover;
-  padding: 50px;
-  margin: 0 auto;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-}
-
-.header {
-
-  &__logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__image {
-    width: 40px;
-    height: 40px;
-  }
-  &__name {
-    font-size: 2rem;
-    a,
-    a:link,
-    a:visited {
-      color: #06B6D1;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.timer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &__button-group {
-    display: flex;
-    gap: 8px;
-  }
-  
-  &__btn {
-    
-    &_status {
-      width: 100px;
-      height: 40px;
-    }
-
-    &_main {
-      width: 200px;
-      height: 70px;
-      color: #fff;
-      background: #06C1DE;
-      border: 0px;
-      position: relative;
-      box-shadow:
-        inset -4px 2px 1px 1px grey,
-        inset -4px -2px 1px 1px lightgray,
-        inset 4px 0px 1px 1px lightgray;
-      font-size: 2rem;
-      
-      &:hover {
-        background-color: #06B6D1;
-      }
-      &:active {
-        top: 5px;
-        box-shadow: 
-          -4px 2px 1px 1px grey,
-          -4px -2px 1px 1px lightgray,
-          4px 0px 1px 1px lightgray; 
-      }
-    }
-  }
-  &__clock {
-    display: flex;
-    font-size: 7rem;
-  }
-}
 
 

@@ -1,0 +1,60 @@
+.btn {
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+}
+
+.active {
+  position: relative;
+}
+
+.active::after {
+  position: absolute;
+  display: block;
+  content: '>';
+  top: -35px;
+  left: 45%;
+  color: #06C1DE;
+  font-size: 2.5rem;
+  rotate: 90deg;
+}
+
+.timer {
+  &__btn {
+    &_status {
+      width: 100px;
+      height: 40px;
+    }
+
+    &_main {
+      width: 200px;
+      height: 70px;
+      color: #fff;
+      background: #06C1DE;
+      border: 0px;
+      position: relative;
+      box-shadow:
+        inset -4px 2px 1px 1px grey,
+        inset -4px -2px 1px 1px lightgray,
+        inset 4px 0px 1px 1px lightgray;
+      font-size: 2rem;
+
+      &:hover {
+        background-color: #06B6D1;
+      }
+
+      &:active {
+        top: 5px;
+        box-shadow:
+          -4px 2px 1px 1px grey,
+          -4px -2px 1px 1px lightgray,
+          4px 0px 1px 1px lightgray;
+      }
+    }
+  }
+
+  &__button-group {
+    display: flex;
+    gap: 8px;
+  }
+}
