@@ -1,15 +1,15 @@
 #playAudio {
   -webkit-appearance: none;
   outline: none;
-  cursor: url('/img/click.gif'), default;
+  cursor: url('../img/click.gif'), default;
   border: none;
   width: 30px;
   height: 30px;
-  background: url("/img/play.png") no-repeat center;
+  background: url("../img/play.png") no-repeat center;
   background-size: contain;
 }
 
 .audio-player #playAudio.pause {
-  background: url("/img/pause.png") no-repeat center;
+  background: url("../img/pause.png") no-repeat center;
   background-size: contain;
 }

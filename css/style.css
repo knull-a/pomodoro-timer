@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  cursor: url("/img/default.png"), auto;
+  cursor: url("../img/default.png"), auto;
 }
 
 body {
@@ -60,16 +60,16 @@ body {
 #playAudio {
   -webkit-appearance: none;
   outline: none;
-  cursor: url("/img/click.gif"), default;
+  cursor: url("../img/click.gif"), default;
   border: none;
   width: 30px;
   height: 30px;
-  background: url("/img/play.png") no-repeat center;
+  background: url("../img/play.png") no-repeat center;
   background-size: contain;
 }
 
 .audio-player #playAudio.pause {
-  background: url("/img/pause.png") no-repeat center;
+  background: url("../img/pause.png") no-repeat center;
   background-size: contain;
 }
 
@@ -97,7 +97,7 @@ body {
 }
 
 .app {
-  background: url("/img/bg-4.gif") no-repeat;
+  background: url("../img/bg-4.gif") no-repeat;
   background-size: cover;
   padding: 50px;
   margin: 0 auto;
