@@ -3,8 +3,6 @@ const modeButtons = document.querySelector("#mode-buttons");
 
 const mainButton = document.querySelector("#btn");
 
-let interval;
-
 const timer = {
   pomodoro: 25,
   shortBreak: 5,
@@ -12,6 +10,10 @@ const timer = {
   longBreakInterval: 4,
   sessions: 0,
 };
+
+let interval;
+
+let player;
 
 mainButton.addEventListener("click", () => {
   const { action } = mainButton.dataset;
@@ -107,18 +109,13 @@ function getRemainingTime(endTime) {
   };
 }
 
-var player;
-
 function onPlayerReady(event) {
   document.getElementById(ui.play).addEventListener("click", togglePlay);
-  timeupdater = setInterval(initProgressBar, 100);
 }
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     document.getElementById(ui.play).classList.remove("pause");
-    document.getElementById(ui.percentage).style.width = 0;
-    document.getElementById(ui.currentTime).innerHTML = "00:00";
     player.seekTo(0, true);
   }
 }
@@ -126,9 +123,6 @@ function onPlayerStateChange(event) {
 let ui = {
   play: "playAudio",
   audio: "audio",
-  percentage: "percentage",
-  seekObj: "seekObj",
-  currentTime: "currentTime",
 };
 
 function togglePlay() {
