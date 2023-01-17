@@ -5,31 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Pomodoro Timer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="img/clock.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="img/clock.png" type="image/png" />
     <link rel="stylesheet" href="css/style.css" />
-    
   </head>
   <body>
-    <main class="app">
-      <div class="header">
+    <div class="app">
+      <header class="header">
         <div class="header__logo">
-          <img src="img/clock.png" alt="Logo" class="header__image">
-          <span class="header__name">pomodoro by <a href="https://github.com/knull-a">knull-a</a></span>
+          <img src="img/clock.png" alt="Logo" class="header__image" />
+          <span class="header__name"
+            >pomodoro by <a href="https://github.com/knull-a">knull-a</a></span
+          >
         </div>
         <!-- TODO: Add menu and settings -->
-      </div>
-      <div class="timer">
+      </header>
+      <main class="timer">
         <div class="timer__button-group" id="mode-buttons">
-          <button data-mode="pomodoro" class="timer__btn_status btn" id="pomodoro">
+          <button
+            data-mode="pomodoro"
+            class="timer__btn_status btn"
+            id="pomodoro"
+          >
             pomodoro
           </button>
-          <button data-mode="shortBreak" class="timer__btn_status btn" id="short-break">
+          <button
+            data-mode="shortBreak"
+            class="timer__btn_status btn"
+            id="short-break"
+          >
             short break
           </button>
-          <button data-mode="longBreak" class="timer__btn_status btn" id="long-break">
+          <button
+            data-mode="longBreak"
+            class="timer__btn_status btn"
+            id="long-break"
+          >
             long break
           </button>
         </div>
@@ -42,28 +58,32 @@
         <button class="timer__btn_main btn" data-action="start" id="btn">
           start
         </button>
-      </div>
-      <div id="player" style="display: none; visibility: hidden;"></div>
-      <div class="audio-player">
-          <button id="playAudio"></button> 
-          <!-- TODO: Add music changer -->
-      </div>
-    </main>
+      </main>
+      <footer class="footer">
+        <div class="footer__player">
+          <div id="player" style="display: none; visibility: hidden"></div>
+          <div class="footer__audio-player">
+            <button id="playAudio" class="footer__btn"></button>
+          </div>
+        </div>
+        <div class="footer__menu">
+          <button id="menu" class="footer__btn"></button>
+          <div class="footer__popup-menu">
+            <div class="footer__tabs">
+              <button class="footer__tab">Audio</button>
+              <button class="footer__tab">Background</button>
+            </div>
+            <button class="footer__close footer__btn"></button>
+            <div class="footer__container">
+              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Lofi">
+              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Classic">
+              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Brown Noise">
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
     <noscript>Error. Please turn on javascript to properly view this page.</noscript>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player("player", {
-          height: "360",
-          width: "640",
-          videoId: "jfKfPfyJRdk",
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-          },
-        });
-      }
-    </script>
     <script src="js/index.js"></script>
   </body>
 </html>
