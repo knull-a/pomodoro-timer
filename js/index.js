@@ -1,7 +1,13 @@
-
 const modeButtons = document.querySelector("#mode-buttons");
 
 const mainButton = document.querySelector("#btn");
+
+const menuButton = document.querySelector("#menu");
+
+const closeMenuButton = document.querySelector("#menu-close");
+
+const folderMenu = document.querySelector("#menu-opened");
+
 
 const timer = {
   pomodoro: 25,
@@ -15,6 +21,11 @@ let interval;
 
 let player;
 
+let ui = {
+  play: "playAudio",
+  audio: "audio",
+};
+
 mainButton.addEventListener("click", () => {
   const { action } = mainButton.dataset;
   const audio = new Audio('./audio/click.wav');
@@ -22,11 +33,19 @@ mainButton.addEventListener("click", () => {
   action === "start" ? startTimer() : stopTimer();
 });
 
+
+modeButtons.addEventListener("click", handleMode);
+
+menuButton.addEventListener("click", openMenu)
+
+
 document.addEventListener("DOMContentLoaded", () => {
   switchMode("pomodoro");
 });
 
-modeButtons.addEventListener("click", handleMode);
+closeMenuButton.addEventListener("click", () => {
+  folderMenu.classList.add("none")
+})
 
 function handleMode(e) {
   const { mode } = e.target.dataset;
@@ -111,6 +130,27 @@ function getRemainingTime(endTime) {
   };
 }
 
+(function setupPlayer() {
+  var tag = document.createElement("script");
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName("script")[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+})();
+
+function onYouTubeIframeAPIReady() {
+  player = new window.YT.Player("player", {
+    height: "360",
+    width: "640",
+    videoId: "jfKfPfyJRdk",
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+      
+    },
+  })
+};
+
 function onPlayerReady(event) {
   document.getElementById(ui.play).addEventListener("click", togglePlay);
 }
@@ -122,11 +162,6 @@ function onPlayerStateChange(event) {
   }
 }
 
-let ui = {
-  play: "playAudio",
-  audio: "audio",
-};
-
 function togglePlay() {
   if (player.getPlayerState() === 1) {
     player.pauseVideo();
@@ -135,6 +170,19 @@ function togglePlay() {
     player.playVideo();
     document.getElementById(ui.play).classList.add("pause");
   }
+}
+
+function openMenu() {
+  folderMenu.classList.remove("none")
+  // add blur filter at background (body)
+}
+
+function changeAudio(e) {
+  const elems = document.querySelectorAll('.footer__active');
+  [].forEach.call(elems, function(el) {
+    el.classList.remove('footer__active')
+  })
+  e.target.className = "footer__active"
 }
 
 
