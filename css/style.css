@@ -11,6 +11,10 @@ body {
   font-family: "VT323", monospace;
 }
 
+.none {
+  display: none;
+}
+
 .btn {
   font-family: "VT323", monospace;
   font-size: 1.3rem;
@@ -57,20 +61,23 @@ body {
   gap: 8px;
 }
 
-#playAudio {
-  -webkit-appearance: none;
-  outline: none;
-  cursor: url("../img/click.gif"), default;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background: url("../img/play.png") no-repeat center;
-  background-size: contain;
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #06B6D1 #ffffff;
 }
 
-.audio-player #playAudio.pause {
-  background: url("../img/pause.png") no-repeat center;
-  background-size: contain;
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #06B6D1;
+  border-radius: 0px;
+  border: 3px inset #ffffff;
 }
 
 .header__logo {
@@ -116,4 +123,79 @@ body {
 .timer__clock {
   display: flex;
   font-size: 7rem;
+}
+
+.footer {
+  display: flex;
+  gap: 10px;
+}
+.footer__btn {
+  outline: none;
+  cursor: url("../img/click.png"), pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+.footer__audio-player #playAudio {
+  background: url("../img/play.png") no-repeat center;
+  background-size: contain;
+}
+.footer__audio-player #playAudio.pause {
+  background: url("../img/pause.png") no-repeat center;
+  background-size: contain;
+}
+.footer__menu #menu {
+  background: url("../img/menu.png") no-repeat center;
+  background-size: contain;
+}
+.footer__popup-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 600px;
+  height: 500px;
+  background-color: #fff;
+  overflow-y: scroll;
+}
+.footer__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.footer__tab {
+  background-color: #06B6D1;
+  color: #fff;
+  border: 0;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+}
+.footer__tab:hover {
+  filter: brightness(105%);
+}
+.footer__tab.footer__active {
+  box-shadow: 1px 1px 10px 0px #fff inset;
+}
+.footer__close {
+  position: absolute;
+  top: 1%;
+  left: 94%;
+  background: url("../img/close.png");
+  background-size: contain;
+}
+.footer__container img {
+  cursor: url("../img/click.png"), pointer;
+  display: block;
+  max-width: 500px;
+  max-height: 100px;
+  width: 100%;
+  height: 100%;
+  margin: 30px auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.footer__container img.footer__active {
+  border: 5px solid #06B6D1;
 }

@@ -1,12 +1,9 @@
 @import 'base/reset';
+@import 'base/variables';
 
 @import 'components/buttons';
-@import 'components/player';
+@import 'components/scrollbar';
 
 @import 'layout/header';
 @import 'layout/main';
-
-
-
-
-
+@import 'layout/footer';
