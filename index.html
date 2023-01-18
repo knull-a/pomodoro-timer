@@ -68,16 +68,16 @@
         </div>
         <div class="footer__menu">
           <button id="menu" class="footer__btn"></button>
-          <div class="footer__popup-menu">
+          <div class="footer__popup-menu none" id="menu-opened">
             <div class="footer__tabs">
-              <button class="footer__tab">Audio</button>
+              <button class="footer__tab active">Audio</button>
               <button class="footer__tab">Background</button>
             </div>
-            <button class="footer__close footer__btn"></button>
-            <div class="footer__container">
-              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Lofi">
-              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Classic">
-              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Brown Noise">
+            <button class="footer__close footer__btn" id="menu-close"></button>
+            <div class="footer__container" id="footer-audios" onclick="changeAudio(event)">
+              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Lofi" class="footer__active" data-name="Lofi">
+              <img src="https://img.youtube.com/vi/2gO1v2GPMFk/hqdefault.jpg" alt="Classic" data-name="Classic">
+              <img src="https://img.youtube.com/vi/MT0Ta_Qldrs/hqdefault.jpg" alt="Brown Noise" data-name="Brown Noise">
             </div>
           </div>
         </div>
