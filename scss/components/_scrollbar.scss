@@ -1,6 +1,6 @@
 * {
   scrollbar-width: auto;
-  scrollbar-color: $color-primary #ffffff;
+  scrollbar-color: var(--color-primary) #ffffff;
 }
 
 *::-webkit-scrollbar {
@@ -12,7 +12,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: $color-primary;
+  background-color: var(--color-primary);
   border-radius: 0px;
   border: 3px inset #ffffff;
 }
