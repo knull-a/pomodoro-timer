@@ -13,7 +13,7 @@
   content: '>';
   top: -35px;
   left: 45%;
-  color: #06C1DE;
+  color: $color-primary;
   font-size: 2.5rem;
   rotate: 90deg;
 }
@@ -29,7 +29,7 @@
       width: 200px;
       height: 70px;
       color: #fff;
-      background: #06C1DE;
+      background: $color-primary;
       border: 0px;
       position: relative;
       box-shadow:
@@ -39,7 +39,7 @@
       font-size: 2rem;
 
       &:hover {
-        background-color: #06B6D1;
+        background-color: $color-primary;
       }
 
       &:active {

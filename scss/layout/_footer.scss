@@ -34,8 +34,8 @@
     max-width: 100%;
     width: 600px;
     height: 500px;
-    background-color: #fff;
     overflow-y: scroll;
+    backdrop-filter: blur(5px);
   }
   &__tabs {
     display: flex;
@@ -44,6 +44,7 @@
     margin-top: 10px;
   }
   &__tab {
+    font-family: 'VT323', monospace;
     background-color: $color-primary;
     color: #fff;
     border: 0;
@@ -52,8 +53,8 @@
     &:hover {
       filter: brightness(105%);
     }
-    &.footer__active {
-      box-shadow: 1px 1px 10px 0px #fff inset;
+    &.menu-active {
+      filter: contrast(120%);
     }
   }
   &__close {
@@ -62,6 +63,9 @@
     left: 94%;
     background: url("../img/close.png");
     background-size: contain;
+    @media screen and (max-width: 550px) {
+      left: 90%;
+    }
   }
   &__container {
 
@@ -74,7 +78,8 @@
       height: 100%;
       margin: 30px auto;
       object-fit: cover;
-      &.footer__active {
+      &.footer__background-active,
+      &.footer__audio-active {
         border: 5px solid $color-primary;
       }
     }

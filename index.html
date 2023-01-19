@@ -70,14 +70,19 @@
           <button id="menu" class="footer__btn"></button>
           <div class="footer__popup-menu none" id="menu-opened">
             <div class="footer__tabs">
-              <button class="footer__tab active">Audio</button>
-              <button class="footer__tab">Background</button>
+              <button class="footer__tab menu-active" onclick="openTab(event, 'footer-audios')">audio</button>
+              <button class="footer__tab" onclick="openTab(event, 'footer-backgrounds')">background</button>
             </div>
             <button class="footer__close footer__btn" id="menu-close"></button>
             <div class="footer__container" id="footer-audios" onclick="changeAudio(event)">
-              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Lofi" class="footer__active" data-name="Lofi">
-              <img src="https://img.youtube.com/vi/2gO1v2GPMFk/hqdefault.jpg" alt="Classic" data-name="Classic">
-              <img src="https://img.youtube.com/vi/MT0Ta_Qldrs/hqdefault.jpg" alt="Brown Noise" data-name="Brown Noise">
+              <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="Lofi" class="footer__audio-active" data-id="jfKfPfyJRdk">
+              <img src="https://img.youtube.com/vi/2gO1v2GPMFk/hqdefault.jpg" alt="Classic" data-id="2gO1v2GPMFk">
+              <img src="https://img.youtube.com/vi/MT0Ta_Qldrs/hqdefault.jpg" alt="Brown Noise" data-id="MT0Ta_Qldrs">
+            </div>
+            <div class="footer__container none" id="footer-backgrounds" onclick="changeBackground(event)">
+              <img src="./img/bg-1.gif" alt="Pixel Background" class="footer__background-active">
+              <img src="./img/bg-2.gif" alt="Pixel Background">
+              <img src="./img/bg-3.gif" alt="Pixel Background">
             </div>
           </div>
         </div>

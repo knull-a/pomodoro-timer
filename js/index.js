@@ -1,13 +1,12 @@
 const modeButtons = document.querySelector("#mode-buttons");
-
 const mainButton = document.querySelector("#btn");
-
 const menuButton = document.querySelector("#menu");
-
 const closeMenuButton = document.querySelector("#menu-close");
 
 const folderMenu = document.querySelector("#menu-opened");
 
+const audiosList = document.querySelectorAll("#footer-audios img");
+const backgroundsList = document.querySelectorAll("#footer-backgrounds img");
 
 const timer = {
   pomodoro: 25,
@@ -33,11 +32,9 @@ mainButton.addEventListener("click", () => {
   action === "start" ? startTimer() : stopTimer();
 });
 
-
 modeButtons.addEventListener("click", handleMode);
 
-menuButton.addEventListener("click", openMenu)
-
+menuButton.addEventListener("click", openMenu);
 
 document.addEventListener("DOMContentLoaded", () => {
   switchMode("pomodoro");
@@ -45,14 +42,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 closeMenuButton.addEventListener("click", () => {
   folderMenu.classList.add("none")
-})
+});
+
+audiosList.forEach(el => {
+  el.addEventListener("click", () => {
+    player.loadVideoById(String(el.dataset.id));
+  });
+});
+
+backgroundsList.forEach(el => {
+  el.addEventListener("click", () => {
+    let app = document.querySelector(".app")
+    let backgroundSource = el.src
+    app.style.background = `url('${backgroundSource}') no-repeat`;
+    app.style.backgroundSize = "cover"; 
+  })
+});
 
 function handleMode(e) {
   const { mode } = e.target.dataset;
   if (!mode) return;
   switchMode(mode);
   stopTimer();
-}
+};
 
 function switchMode(mode) {
   timer.mode = mode;
@@ -67,7 +79,7 @@ function switchMode(mode) {
   document.querySelector(`[data-mode="${mode}"]`).classList.add("active");
   // document.body.style.backgroundColor = `var(--${mode})`;
   updateClock();
-}
+};
 
 function updateClock() {
   const { remainingTime } = timer;
@@ -75,12 +87,12 @@ function updateClock() {
   const seconds = `${remainingTime.seconds}`.padStart(2, "0");
   const min = document.querySelector("#minutes");
   const sec = document.querySelector("#seconds");
+  const text = timer.mode === "pomodoro" ? "Time to work!" : "Take a break!";
+
   min.textContent = minutes;
   sec.textContent = seconds;
-
-  const text = timer.mode === "pomodoro" ? "Time to work!" : "Take a break!";
   document.title = `${minutes}:${seconds} — ${text}`;
-}
+};
 
 function startTimer() {
   let { total } = timer.remainingTime;
@@ -108,14 +120,14 @@ function startTimer() {
       startTimer();
     }
   }, 1000);
-}
+};
 
 function stopTimer() {
   clearInterval(interval);
   mainButton.dataset.action = "start";
   mainButton.textContent = "start";
   mainButton.classList.remove("active");
-}
+};
 
 function getRemainingTime(endTime) {
   const currentTime = Date.parse(new Date());
@@ -127,8 +139,8 @@ function getRemainingTime(endTime) {
     total,
     minutes,
     seconds,
-  };
-}
+  }
+};
 
 (function setupPlayer() {
   var tag = document.createElement("script");
@@ -153,14 +165,14 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
   document.getElementById(ui.play).addEventListener("click", togglePlay);
-}
+};
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
     document.getElementById(ui.play).classList.remove("pause");
     player.seekTo(0, true);
   }
-}
+};
 
 function togglePlay() {
   if (player.getPlayerState() === 1) {
@@ -170,19 +182,40 @@ function togglePlay() {
     player.playVideo();
     document.getElementById(ui.play).classList.add("pause");
   }
-}
+};
 
 function openMenu() {
-  folderMenu.classList.remove("none")
+  folderMenu.classList.remove("none");
   // add blur filter at background (body)
-}
+};
 
 function changeAudio(e) {
-  const elems = document.querySelectorAll('.footer__active');
+  const elems = document.querySelectorAll('.footer__audio-active');
   [].forEach.call(elems, function(el) {
-    el.classList.remove('footer__active')
-  })
-  e.target.className = "footer__active"
-}
+    el.classList.remove('footer__audio-active');
+  });
+  e.target.classList.add("footer__audio-active");
+};
+
+function changeBackground(e) {
+  const elems = document.querySelectorAll(".footer__background-active");
+  [].forEach.call(elems, function (el) {
+    el.classList.remove("footer__background-active");
+  });
+  e.target.classList.add("footer__background-active");
+};
+
+function openTab(e, tabName) {
+  const tabsContainer = document.querySelectorAll(".footer__container");
+  const menuTabs = document.querySelectorAll(".footer__tabs");
+  tabsContainer.forEach(el => {
+    el.classList.add("none");
+  });
+  menuTabs.forEach(el => {
+    el.classList.remove("menu-active");
+  });
+  document.getElementById(tabName).classList.remove("none");
+  e.currentTarget.classList.add("menu-active");
+};
 
 

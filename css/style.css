@@ -15,6 +15,10 @@ body {
   display: none;
 }
 
+.block {
+  display: block;
+}
+
 .btn {
   font-family: "VT323", monospace;
   font-size: 1.3rem;
@@ -30,7 +34,7 @@ body {
   content: ">";
   top: -35px;
   left: 45%;
-  color: #06C1DE;
+  color: #06B6D1;
   font-size: 2.5rem;
   rotate: 90deg;
 }
@@ -43,7 +47,7 @@ body {
   width: 200px;
   height: 70px;
   color: #fff;
-  background: #06C1DE;
+  background: #06B6D1;
   border: 0px;
   position: relative;
   box-shadow: inset -4px 2px 1px 1px grey, inset -4px -2px 1px 1px lightgray, inset 4px 0px 1px 1px lightgray;
@@ -71,7 +75,8 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: #ffffff;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 
 *::-webkit-scrollbar-thumb {
@@ -80,6 +85,11 @@ body {
   border: 3px inset #ffffff;
 }
 
+@media screen and (max-width: 550px) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
 .header__logo {
   display: flex;
   align-items: center;
@@ -104,7 +114,7 @@ body {
 }
 
 .app {
-  background: url("../img/bg-4.gif") no-repeat;
+  background: url("../img/bg-1.gif") no-repeat;
   background-size: cover;
   padding: 50px;
   margin: 0 auto;
@@ -156,8 +166,9 @@ body {
   max-width: 100%;
   width: 600px;
   height: 500px;
-  background-color: #fff;
   overflow-y: scroll;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 .footer__tabs {
   display: flex;
@@ -166,6 +177,7 @@ body {
   margin-top: 10px;
 }
 .footer__tab {
+  font-family: "VT323", monospace;
   background-color: #06B6D1;
   color: #fff;
   border: 0;
@@ -175,8 +187,8 @@ body {
 .footer__tab:hover {
   filter: brightness(105%);
 }
-.footer__tab.footer__active {
-  box-shadow: 1px 1px 10px 0px #fff inset;
+.footer__tab.menu-active {
+  filter: contrast(120%);
 }
 .footer__close {
   position: absolute;
@@ -184,6 +196,11 @@ body {
   left: 94%;
   background: url("../img/close.png");
   background-size: contain;
+}
+@media screen and (max-width: 550px) {
+  .footer__close {
+    left: 90%;
+  }
 }
 .footer__container img {
   cursor: url("../img/click.png"), pointer;
@@ -196,6 +213,6 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.footer__container img.footer__active {
+.footer__container img.footer__background-active, .footer__container img.footer__audio-active {
   border: 5px solid #06B6D1;
 }
