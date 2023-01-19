@@ -55,7 +55,8 @@ backgroundsList.forEach(el => {
     let app = document.querySelector(".app")
     let backgroundSource = el.src
     app.style.background = `url('${backgroundSource}') no-repeat`;
-    app.style.backgroundSize = "cover"; 
+    app.style.backgroundSize = "cover";
+    document.documentElement.style.setProperty('--color-primary', `${el.dataset.id}`) 
   })
 });
 
