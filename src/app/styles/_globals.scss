@@ -1,5 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
 html {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
+}
+
+a,
+a:visited,
+a:link {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

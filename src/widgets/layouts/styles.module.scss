@@ -1,0 +1,11 @@
+.wrapper {
+  --wrapper-padding: 3.125rem;
+  padding: var(--wrapper-padding);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--wrapper-padding) * 2);
+}
+
+.main {
+  flex-grow: 1;
+}

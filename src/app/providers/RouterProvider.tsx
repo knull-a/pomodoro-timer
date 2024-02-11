@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { HomePage } from "@/pages/home";
 import { NotFoundPage } from "@/pages/not-found";
+import { MainLayout, NakedLayout } from "@/widgets/layouts";
 import { pathKeys } from "@/shared/lib/react-router";
-import { MainLayout, NakedLayout } from "@/shared/ui/layouts";
 
 // https://github.com/remix-run/react-router/discussions/10166
 function BubbleError() {
